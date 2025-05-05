@@ -53,6 +53,7 @@ int main() {
                 break;
 
             case 2: // Remover receita
+                exibirReceitas(&listaReceitas);
                 printf("\n");
                 printf("=== Remover Receita ===\n");
                 printf("Digite o nome da receita: ");
@@ -202,8 +203,8 @@ int main() {
         }
         
         printf("\nPressione Enter para continuar...");
+        limparBuffer();
         getchar();
-        printf("\e[1;1H\e[2J");
         system("clear");
         
     } while (op != 0);

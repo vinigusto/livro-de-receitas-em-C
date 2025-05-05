@@ -17,13 +17,13 @@ void adicionarReceita (Receita** listaR, char nome[], char instrucoes[]){
         printf("Erro\n");
         return;
     }
-    
+
     strcpy(novo->nome, nome);
     strcpy(novo->modoPreparo, instrucoes);
     novo->listaI = NULL;
     novo->favorita = -1; // -1 = não favoritada, 1 = favoritada
     novo->prox = NULL;
-    
+
     if(*listaR == NULL)
     {
         *listaR = novo; // lista vazia
@@ -39,7 +39,7 @@ void adicionarReceita (Receita** listaR, char nome[], char instrucoes[]){
     }
     printf("\nReceita %s adicionada com sucesso!\n", nome);
     printf("\n");
-    sleep(1);
+    sleep(3);
 }
 
 void removerReceita(Receita** listaR, char nome[]){
@@ -49,7 +49,7 @@ void removerReceita(Receita** listaR, char nome[]){
     }
     Receita *atual = *listaR;
     Receita *anterior = NULL;
-    
+
     while(atual != NULL && strcmp(atual->nome, nome) != 0){
         anterior = atual;
         atual = atual->prox;
@@ -65,12 +65,16 @@ void removerReceita(Receita** listaR, char nome[]){
     }
 
     Ingrediente *ingredienteAtual = atual->listaI;
+    Ingrediente *proximoIngrediente;
+
     while (ingredienteAtual != NULL) {
         printf("Removendo ingrediente: %s\n", ingredienteAtual->nome);
-        removerIngrediente(&(atual->listaI), atual->listaI->nome);
+        proximoIngrediente = ingredienteAtual->prox; // Salva o ponteiro para o próximo
+        removerIngrediente(&(atual->listaI), ingredienteAtual->nome);
+        ingredienteAtual = proximoIngrediente; // Move para o próximo ingrediente
     }
     atual->listaI = NULL;
-
+    
     if (anterior == NULL) {
         *listaR = atual->prox;
     } else {
@@ -80,7 +84,7 @@ void removerReceita(Receita** listaR, char nome[]){
     printf("Receita '%s' removida com sucesso!\n", nome);
     free(atual);
     printf("\n");
-    sleep(1);
+    sleep(3);
 }
 
 void buscarReceita(Receita** listaR, char nome[]){
@@ -94,15 +98,14 @@ void buscarReceita(Receita** listaR, char nome[]){
             exibirIngredientes(&(atual->listaI));  // Agora mostra os ingredientes
             printf("Favorita: %s\n", atual->favorita == 1 ? "Sim" : "Não");
             printf("\n");
-            sleep(1);
             return;
         }
         atual = atual->prox;
     }
-    
+
     printf("Receita não encontrada\n");
     printf("\n");
-    sleep(1);
+
     return;
 }
 
@@ -112,7 +115,7 @@ void exibirReceitas(Receita** listaR) {
     if(atual == NULL) {
         printf("Nenhuma receita cadastrada.\n");
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -130,7 +133,7 @@ void exibirReceitas(Receita** listaR) {
     printf("-----------------------\n");
     printf("Total: %d receitas\n\n", contador-1);
     printf("\n");
-    sleep(1);
+    sleep(3);
 }
 
 void favoritarReceita(Receita** listaR, char nome[])
@@ -138,7 +141,7 @@ void favoritarReceita(Receita** listaR, char nome[])
     if (*listaR == NULL) {
         printf("Lista de receitas vazia\n");
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -152,14 +155,14 @@ void favoritarReceita(Receita** listaR, char nome[])
                 printf("Receita '%s' desfavoritada com sucesso!\n", nome);
             }
             printf("\n");
-            sleep(2);
+            sleep(3);
             return;
         }
         atual = atual->prox;
     }
     printf("Receita '%s' não encontrada\n", nome);
     printf("\n");
-    sleep(2);
+    sleep(3);
 }
 
 void listarReceitasFavoritas(Receita** listaR){
@@ -168,7 +171,7 @@ void listarReceitasFavoritas(Receita** listaR){
     if(listaR == NULL){
         printf("Lista de receitas vazia\n");
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -198,14 +201,14 @@ void listarReceitasFavoritas(Receita** listaR){
         printf("Nenhuma receita favoritada\n");
     }
     printf("\n");
-    sleep(1);
+    sleep(3);
 }
 
 void adicionarIngredienteReceita(Receita** listaR, char nomeReceita[], char nomeIngrediente[], char unidade[], float qtd, int essencial) {
     if (*listaR == NULL) {
         printf("Lista de receitas vazia.\n");
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -217,7 +220,7 @@ void adicionarIngredienteReceita(Receita** listaR, char nomeReceita[], char nome
     if (atual == NULL) {
         printf("Receita '%s' não encontrada.\n", nomeReceita);
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -226,7 +229,7 @@ void adicionarIngredienteReceita(Receita** listaR, char nomeReceita[], char nome
         if (strcmp(ing->nome, nomeIngrediente) == 0) {
             printf("Ingrediente '%s' já existe na receita.\n", nomeIngrediente);
             printf("\n");
-            sleep(1);
+            sleep(3);
             return;
         }
         ing = ing->prox;
@@ -240,7 +243,7 @@ void removerIngredienteReceita(Receita** listaR, char nomeReceita[], char nomeIn
     if (*listaR == NULL) {
         printf("Lista de receitas vazia.\n");
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -252,7 +255,7 @@ void removerIngredienteReceita(Receita** listaR, char nomeReceita[], char nomeIn
     if (atual == NULL) {
         printf("Receita '%s' não encontrada.\n", nomeReceita);
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -263,7 +266,7 @@ void listarIngredientesReceita(Receita** listaR, char nomeReceita[]) {
     if (*listaR == NULL) {
         printf("Lista de receitas vazia.\n");
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 
@@ -275,7 +278,7 @@ void listarIngredientesReceita(Receita** listaR, char nomeReceita[]) {
     if (atual == NULL) {
         printf("Receita '%s' não encontrada.\n", nomeReceita);
         printf("\n");
-        sleep(1);
+        sleep(3);
         return;
     }
 

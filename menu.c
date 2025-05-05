@@ -20,7 +20,7 @@ void creditos(){
   printf("Vinicius Augusto de Souza\n\n");
   printf("\033[0m"); // Resetar cor
 
-  sleep(3);
+  sleep(1);
   printf("\n\nPressione Enter para continuar...");
   getchar();
   system("clear");
@@ -38,7 +38,7 @@ void imprimirComandosMenu(){
   printf("08 - Remover ingrediente de receita\n");
   printf("09 - Exibir ingredientes da receita\n");
   
-  printf("\n=== Gerenciar Ingredientes ===\n");
+  printf("\n=== Gerenciar Dispensa de Ingredientes ===\n");
   printf("10 - Adicionar ingrediente\n");
   printf("11 - Remover ingrediente\n");
   printf("12 - Buscar ingrediente\n");
