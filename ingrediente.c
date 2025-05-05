@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define TEMPO_CARREGAMENTO 1
+
 void adicionarIngrediente(Ingrediente** listaI, char nome[], char unidade[], float qtd, int essencial, int tempo_load) {
     Ingrediente *novo = (Ingrediente *) malloc (sizeof(Ingrediente));
     if(novo == NULL){
@@ -31,7 +33,7 @@ void adicionarIngrediente(Ingrediente** listaI, char nome[], char unidade[], flo
         }
         atual->prox = novo;
         novo->ant = atual;
-        printf("Ingrediente '%s' adicionado com sucesso.\n", nome);
+        //printf("Ingrediente '%s' adicionado com sucesso.\n", nome);
     }
     printf("\n");
     sleep(tempo_load);
@@ -64,7 +66,7 @@ void removerIngrediente(Ingrediente **listaI, char nome[])
             free(atual);
             printf("Ingrediente removido com sucesso.\n");
             printf("\n");
-            sleep(3);
+            sleep(TEMPO_CARREGAMENTO);
             return;
         }
         anterior = atual;
@@ -72,7 +74,7 @@ void removerIngrediente(Ingrediente **listaI, char nome[])
     }
     printf("\n");
     sleep(3);
-    printf("Ingrediente '%s' não encontrado.\n", nome);
+    printf("Ingrediente '%s' nao encontrado.\n", nome);
 }
 
 void buscarIngrediente(Ingrediente** listaI, char nome[])
@@ -87,16 +89,16 @@ void buscarIngrediente(Ingrediente** listaI, char nome[])
             printf("Nome: %s\n", atual->nome);
             printf("Unidade: %s\n", atual->unidade);
             printf("Quantidade: %.2f\n", atual->qtd);
-            printf("Essencial: %s\n", atual->essencial ? "Sim" : "Não");
+            printf("Essencial: %s\n", atual->essencial ? "Sim" : "Nao");
             printf("\n");
-            sleep(3);
+            sleep(TEMPO_CARREGAMENTO);
             return;
         }
         atual = atual->prox;
     }
     printf("\n");
-    sleep(3);
-    printf("Ingrediente '%s' não encontrado.\n", nome);
+    printf("Ingrediente '%s' nao encontrado.\n", nome);
+    sleep(TEMPO_CARREGAMENTO);
 }
 
 void exibirIngredientes(Ingrediente** listaI)
@@ -106,21 +108,21 @@ void exibirIngredientes(Ingrediente** listaI)
     if (atual == NULL) {
         printf("Lista vazia.\n");
         printf("\n");
-        sleep(3);
+        sleep(TEMPO_CARREGAMENTO);
         return;
     }
 
-    printf("Lista de Ingredientes:\n"); 
+    printf("Lista de Ingredientes:\n");
     int cont = 1;
     while (atual != NULL)
     {
-        printf("%d. %s | Unidade: %s | Quantidade: %.2f | Essencial: %s\n", 
-               cont, atual->nome, atual->unidade, atual->qtd, 
-               atual->essencial ? "Sim" : "Não");
+        printf("%d. %s | Unidade: %s | Quantidade: %.2f | Essencial: %s\n",
+               cont, atual->nome, atual->unidade, atual->qtd,
+               atual->essencial ? "Sim" : "Nao");
         atual = atual->prox;
         cont++;
     }
-    
+
 
 }
 
@@ -131,16 +133,16 @@ void ingredienteEssencial(Ingrediente** listaI, char nome[])
     while (atual != NULL) {
         if (strcmp(atual->nome, nome) == 0) {
             atual->essencial = !atual->essencial; // Alterna entre -1 e 1
-            printf("Ingrediente '%s' marcado como %s.\n", 
-                   nome, atual->essencial ? "essencial" : "não essencial");
+            printf("Ingrediente '%s' marcado como %s.\n",
+                   nome, atual->essencial ? "essencial" : "nao essencial");
             printf("\n");
-            sleep(3);
+            sleep(TEMPO_CARREGAMENTO);
             return;
         }
         atual = atual->prox;
     }
 
-    printf("Ingrediente '%s' não encontrado.\n", nome);
+    printf("Ingrediente '%s' nao encontrado.\n", nome);
 }
 
 void listarIngredientesEssenciais(Ingrediente** listaI)
@@ -151,7 +153,7 @@ void listarIngredientesEssenciais(Ingrediente** listaI)
     printf("Ingredientes Essenciais:\n");
     while (atual != NULL) {
         if (atual->essencial) {
-            printf("Nome: %s | Unidade: %s | Quantidade: %.2f\n", 
+            printf("Nome: %s | Unidade: %s | Quantidade: %.2f\n",
                    atual->nome, atual->unidade, atual->qtd);
             encontrados++;
         }
@@ -220,12 +222,12 @@ void renomearIngrediente(Ingrediente** listaI, char nome[], char novoNome[])
             strcpy(atual->nome, novoNome);
             printf("Nome do ingrediente alterado de '%s' para '%s'.\n", nome, novoNome);
             printf("\n");
-            sleep(3);
+            sleep(TEMPO_CARREGAMENTO);
             return;
         }
         atual = atual->prox;
     }
     printf("\n");
-    sleep(3);
-    printf("Ingrediente '%s' não encontrado.\n", nome);
+    sleep(TEMPO_CARREGAMENTO);
+    printf("Ingrediente '%s' nao encontrado.\n", nome);
 }

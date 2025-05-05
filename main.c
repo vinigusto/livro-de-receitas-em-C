@@ -29,17 +29,17 @@ int main() {
     do {
         imprimirCabecalho();
         imprimirComandosMenu();
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opcao: ");
 
         // Ler a opção
         if (scanf("%d", &op) != 1) {
             limparBuffer();
             op = -1; // Forçar opção inválida
         }
-        
+
         limparBuffer();
         printf("\n");
-        
+
         switch (op) {
             case 1: // Adicionar receita
                 printf("\n");
@@ -50,6 +50,9 @@ int main() {
                 printf("Digite o modo de preparo: ");
                 scanf(" %99[^\n]", instrucoes);
                 adicionarReceita(&listaReceitas, nome, instrucoes);
+                printf("\nReceita %s adicionada com sucesso!\n", nome);
+                printf("\n");
+                sleep(2);
                 break;
 
             case 2: // Remover receita
@@ -59,6 +62,9 @@ int main() {
                 printf("Digite o nome da receita: ");
                 scanf(" %49[^\n]", nome);
                 removerReceita(&listaReceitas, nome);
+                printf("\nReceita %s removida com sucesso!\n", nome);
+                printf("\n");
+                sleep(2);
                 break;
 
             case 3: // Buscar receita
@@ -102,9 +108,10 @@ int main() {
                 scanf(" %19[^\n]", unidade);
                 printf("Digite a quantidade: ");
                 scanf("%f", &qtd);
-                printf("É essencial? (1-Sim / 0-Não): ");
+                printf("Ingrediente essencial? (1-Sim / 0-Nao): ");
                 scanf("%d", &essencial);
                 adicionarIngredienteReceita(&listaReceitas, nome, nomeIngrediente, unidade, qtd, essencial);
+                printf("Ingrediente '%s' adicionado na receita '%s'.\n", nomeIngrediente, nome);
                 break;
 
             case 8: // Remover ingrediente de receita
@@ -134,7 +141,7 @@ int main() {
                 scanf(" %19[^\n]", unidade);
                 printf("Digite a quantidade: ");
                 scanf("%f", &qtd);
-                printf("É essencial? (1-Sim / 0-Não): ");
+                printf("Ingrediente essencial? (1-Sim / 0-Nao): ");
                 scanf("%d", &essencial);
                 adicionarIngrediente(&listaIngredientes, nome, unidade, qtd, essencial, 2);
                 break;
@@ -198,15 +205,16 @@ int main() {
                 break;
 
             default:
-                printf("Opção inválida!\n");
+                printf("Opcao invalida!\n");
                 break;
         }
-        
-        printf("\nPressione Enter para continuar...");
-        limparBuffer();
+
+        printf("\nPressione Enter para continuar...\n");
+        if(op != 4 && op != 6 && op != 9 && op != 13 && op != 15 && op != 16 && op != 0)
+            limparBuffer();
         getchar();
-        system("clear");
-        
+        system("cls");
+
     } while (op != 0);
 
     printf("\nObrigado por usar o nosso Livro de Receitas!\n");

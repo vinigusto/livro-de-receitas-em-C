@@ -8,22 +8,18 @@ void limparBuffer() {
 }
 
 void creditos(){
-  printf("\033[1;36m"); // Cor ciano brilhante
-  printf("╔═══════════════════════════════════════════════════════╗\n");
-  printf("║   ## Trabalho de Algoritmos e Estrutura de Dados ##   ║\n");
-  printf("╚═══════════════════════════════════════════════════════╝\n\n");
-  printf("\033[1;35m"); // Cor violeta
-  printf("Professora: ･ﾟ✧*:･ﾟ✧\n");
+  printf("#################################################\n");
+  printf("## Trabalho de Algoritmos e Estrutura de Dados ##\n");
+  printf("#################################################\n\n");
+  printf("Professora:\n");
   printf("Maria Adriana Vidigal de Lima\n\n");
-  printf("Alunos: ･ﾟ✧*:･ﾟ✧\n");
+  printf("Alunos:\n");
   printf("Amanda Resende Fernandes\n");
   printf("Vinicius Augusto de Souza\n\n");
-  printf("\033[0m"); // Resetar cor
 
   sleep(1);
-  printf("\n\nPressione Enter para continuar...");
+  printf("\n\nPressione Enter para continuar...\n");
   getchar();
-  system("clear");
 }
 
 void imprimirComandosMenu(){
@@ -37,7 +33,7 @@ void imprimirComandosMenu(){
   printf("07 - Adicionar ingrediente a receita\n");
   printf("08 - Remover ingrediente de receita\n");
   printf("09 - Exibir ingredientes da receita\n");
-  
+
   printf("\n=== Gerenciar Dispensa de Ingredientes ===\n");
   printf("10 - Adicionar ingrediente\n");
   printf("11 - Remover ingrediente\n");
@@ -53,11 +49,7 @@ void imprimirComandosMenu(){
 
 void imprimirCabecalho()
 {
-  printf("\033[1;34m"); // Cor azul brilhante
-  printf("\n✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧\n");
-  printf("╔══════════════════════════════════════════╗\n");
-  printf("║   Bem-vindo ao seu Livro de Receitas!    ║\n");
-  printf("╚══════════════════════════════════════════╝\n");
-  printf("✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧\n");
-  printf("\033[0m");
+  printf("###############################################\n");
+  printf("###   Bem-vindo ao seu Livro de Receitas!   ###\n");
+  printf("###############################################\n");
 }
