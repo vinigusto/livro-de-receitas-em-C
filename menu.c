@@ -17,6 +17,8 @@ void creditos(){
   printf("Amanda Resende Fernandes\n");
   printf("Vinicius Augusto de Souza\n\n");
 
+  desenhar_bolo();
+
   sleep(1);
   printf("\n\nPressione Enter para continuar...\n");
   getchar();
@@ -52,4 +54,21 @@ void imprimirCabecalho()
   printf("###############################################\n");
   printf("###   Bem-vindo ao seu Livro de Receitas!   ###\n");
   printf("###############################################\n");
+}
+
+void desenhar_bolo(){
+    printf("       (---(--(---(\n");
+    printf("      ()--()--()--()\n");
+    printf("      ||--||--||--||\n");
+    printf("      {*~*~*~*~*~*~*}\n");
+    printf("      @@@@@@@@@@@@@@@\n");
+    printf("   {~*~*~*~*~*~*~*~*~*~}\n");
+    printf("    @@@@@@@@@@@@@@@@@@@\n");
+    printf("{~*~*~*~*~*~*~*~*~*~*~*~*~}\n");
+    printf("{*~*~*~*~*~*~*~*~*~*~*~*~*}\n");
+    printf("{~*~*~*~*~*~*~*~*~*~*~*~*~}\n");
+    printf("    @@@@@@@@@@@@@@@@@@@\n");
+    printf("        )---------(\n");
+    printf("      _.-----------._\n");
+    printf("     //______________\\\n");
 }

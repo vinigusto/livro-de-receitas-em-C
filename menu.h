@@ -6,5 +6,6 @@ void creditos();
 void exibirSeparador();
 void limparBuffer();
 void imprimirCabecalho();
+void desenhar_bolo();
 
 #endif
